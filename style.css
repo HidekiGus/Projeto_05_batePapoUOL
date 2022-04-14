@@ -77,6 +77,7 @@
     margin-bottom: 4px;
 
     display: flex;
+    word-wrap: break-word;
     align-items: center;
     justify-content: flex-start;
     background-color: #ffffff;

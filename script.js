@@ -1,14 +1,18 @@
 // requisita as mensagens, checa se as lengths do que já tem
 // vs os dados novos e carrega só se tiver novos, e se chama 
 //depois de 3000ms ou 3s
+let nome = "";
+
 function requisitarMensagens() {
     const promessa = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
     promessa.then(loopMensagens);
 }
 
 function loopMensagens(response) {
-    if (document.querySelectorAll(".mensagem").length !== response.data.length) {
-        const area = document.querySelector(".area-mensagens");
+    let area = document.querySelector(".area-mensagens");
+    let tamanho = Number(response.data.length);
+    if (document.querySelectorAll(".horario")[tamanho-1] !== response.data[tamanho-1].time) {
+        area.innerHTML = ``;
         for (i = 0; i < response.data.length; i++) {
             let remetente = response.data[i].from;
             let destinatario = response.data[i].to;
@@ -65,18 +69,34 @@ function loopMensagens(response) {
 }
 
 function entrouNaSala() {
-    const nome = prompt("Qual é o seu nome?");
+    nome = prompt("Qual é o seu nome?");
     const promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", {name: nome});
     promessa.then(function () {
-        console.log("deu certo");
         requisitarMensagens();
-        setInterval(axios.post("https://mock-api.driven.com.br/api/v6/uol/status", {name: nome}), 5000);
-    })
+        setInterval(function () {
+            abstraida(nome);
+        }, 5000);
+    });
     promessa.catch(function () {
         alert("Já tem alguém usando esse nome!")
-        entrouNaSala();
-    })
+        window.location.reload();
+    });
 }
 
+function abstraida(nome) {
+    let promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", {name: nome});
+    console.log("Ola marilene");
+}
+
+function mandarMensagem() {
+    const mensagem = document.querySelector("input").value;
+    console.log(mensagem);
+    let objeto = {from: `${nome}`, to: "Todos", text: `${mensagem}`, type: "message"};
+    let promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", objeto);
+    promessa.then(function () {
+        document.querySelector("input").value = '';
+        requisitarMensagens();
+    });
+}
 
 entrouNaSala();
