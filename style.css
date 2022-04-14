@@ -1,0 +1,100 @@
+.barra-topo {
+    min-width: 375px;
+    width:100%;
+    height: 80px;
+
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 1;    
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.barra-topo img{
+    margin: 16px 23px 11px 22px;
+}
+
+.icon {
+    margin-right: 23px;
+    font-size: 42px;
+}
+
+.area-mensagens {
+    width: 100%;
+    height: auto;
+
+    padding-top: 26px;
+    top: 80px;
+    left: 0;
+    position: absolute;
+
+    background-color: #e5e5e5;
+}
+
+.barra-bottom {
+    width: 100%;
+    height: 80px;
+
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #ffffff;
+    
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.barra-bottom input{
+    border: 0;
+    width: 80%;
+    height: 90%;
+
+    margin-left: 20px;
+
+    font-size: 18px;
+}
+
+.mensagem {
+    font-family: 'Roboto';
+    font-weight: 400;
+    line-height: 16px;
+
+    min-height: 40px;
+    height: auto;
+    width: 100%;
+
+    border-radius: 2px;
+    margin-bottom: 4px;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ffffff;
+}
+
+.entrou {
+    background-color: #dcdcdc;
+}
+
+.reservado {
+    background-color: #ffdede;
+}
+
+.horario {
+    color: #aaaaaa;
+    margin: 0 8px;
+}
+
+.mensagem span{
+    font-weight: 700;
+}
