@@ -84,8 +84,7 @@ function entrouNaSala() {
 }
 
 function abstraida(nome) {
-    let promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", {name: nome});
-    console.log("Ola marilene");
+    axios.post("https://mock-api.driven.com.br/api/v6/uol/status", {name: nome});
 }
 
 function mandarMensagem() {
